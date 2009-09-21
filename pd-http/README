@@ -1,22 +1,31 @@
 pd-http
-Copyright 2009, Chris McCormick
+Copyright 2009, Chris McCormick and Frank Barknecht
 GPLv3 - see the file COPYING for details
 
 Introduction
 ------------
 
-This package provides a way of using HTTP to share multi-user data in Pure Data
-patches.
+This package shows an idiom for, and provides a way of, using HTTP to share
+multi-user data in Pure Data patches. It requires vanilla Pd, including the
+command line programs pdsend, pdreceive, and wget or curl. On the server side
+it requires memcache and the ability for cgi scripts to be run.
 
 Install
 -------
 
 Make sure you have memcache installed on your server, and python-memcache. Put
-keyvalue.cgi and incrdecr.cgi into your cgi-bin directory.
+keyvalue.cgi and incrdecr.cgi into your cgi-bin directory. If you want to test
+this on a local machine and you have Python installed you can run a test server
+in this directory by issuing the command `python -m "CGIHTTPServer"` and then
+browsing to http://localhost:8000/cgi-bin/incrdecr.cgi. If you receive an error
+message about permissions, you may have to run `chmod 755 cgi-bin/*.cgi`.
 
 On your client make sure you have wget installed and pdsend and pdreceive are
 in your path. Load up the example patch http-help.pd and then execute the
-fetchurl script on the command line.
+fetchurl script on the command line. You may need to do something like this on
+MacOS if Pd binaries are not in your path:
+
+`export PATH=$PATH:/Applications/Pd-0.42-5.app/Contents/Resources/bin/`
 
 keyvalue.cgi
 ------------

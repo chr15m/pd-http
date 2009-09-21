@@ -23,7 +23,7 @@ if environ.has_key("QUERY_STRING"):
 	if len(parts) == 1 and parts[0]:
 		# get a key
 		try:
-			print parts[0] + " " + (str(int(m.get(prefix + parts[0]))) or "") + ";"
+			print "incrdecr " + parts[0] + " " + (str(int(m.get(prefix + parts[0]))) or "") + ";"
 		except ValueError:
 			print "incrdecr not-an-int;"
 		except TypeError:
@@ -33,13 +33,13 @@ if environ.has_key("QUERY_STRING"):
 		m.add(prefix + parts[0], 0)
 		# set a key, incr a key, decr a key
 		if parts[1] == "incr":
-			print parts[0] + " " + str(m.incr(prefix + parts[0])) + ";"
+			print "incrdecr " + parts[0] + " " + str(m.incr(prefix + parts[0])) + ";"
 		elif parts[1] == "decr":
-			print parts[0] + " " + str(m.decr(prefix + parts[0])) + ";"
+			print "incrdecr " + parts[0] + " " + str(m.decr(prefix + parts[0])) + ";"
 		else:
 			try:
 				m.set(prefix + parts[0], int(parts[1]))
-				print parts[0] + " " + parts[1] + ";"
+				print "incrdecr " + parts[0] + " " + parts[1] + ";"
 			except ValueError:
 				print "incrdecr bad-argument;"
 	elif len(parts) > 2:

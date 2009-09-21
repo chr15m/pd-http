@@ -1,12 +1,14 @@
-#N canvas 713 40 450 300 10;
+#N canvas 469 76 462 300 10;
 #X obj 9 274 print;
 #X obj 9 252 http;
-#X msg 28 20 http://mccormick.cx/cgi-bin/keyvalue.cgi?mykey yo what
+#X msg 28 20 http://localhost:8000/cgi-bin/keyvalue.cgi?mykey yo what
 up;
-#X msg 46 48 http://mccormick.cx/cgi-bin/keyvalue.cgi?mykey;
-#X msg 77 109 http://mccormick.cx/cgi-bin/incrdecr.cgi?item incr;
-#X msg 86 132 http://mccormick.cx/cgi-bin/incrdecr.cgi?item decr;
-#X msg 104 160 http://mccormick.cx/cgi-bin/incrdecr.cgi?item;
+#X msg 46 48 http://localhost:8000/cgi-bin/keyvalue.cgi?mykey;
+#X msg 62 116 http://localhost:8000/cgi-bin/incrdecr.cgi?item incr
+;
+#X msg 72 139 http://localhost:8000/cgi-bin/incrdecr.cgi?item decr
+;
+#X msg 89 167 http://localhost:8000/cgi-bin/incrdecr.cgi?item;
 #X connect 1 0 0 0;
 #X connect 2 0 1 0;
 #X connect 3 0 1 0;

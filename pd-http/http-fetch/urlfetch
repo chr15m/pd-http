@@ -1,9 +1,18 @@
 #!/bin/bash
+
+# find an HTTP fetching command line program
+if [ `which wget` ]
+	then cmd="`which wget` -O -";
+	else cmd=`which curl`;
+fi
+
+# start the receiving loop
 pdreceive 1570 |
 while read line ; do
-     fetch=`echo $line | sed 's/;//'`
+     # strip off semicolons and replace spaces with '+' signs
+     fetch=`echo $line | sed 's/;//' | sed 's/ /+/g'`
      echo "url: $fetch" >> listener.log
-     result=`wget -O - "$fetch"`
+     result=`$cmd "$fetch"`
      OLD_IFS=$IFS
      IFS=$'\x0a';
      for t in $result;

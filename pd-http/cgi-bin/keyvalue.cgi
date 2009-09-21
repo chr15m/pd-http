@@ -22,7 +22,7 @@ if environ.has_key("QUERY_STRING"):
 	parts = unquote_plus(environ['QUERY_STRING']).split(" ")
 	if len(parts) == 1 and parts[0]:
 		# get a key
-		print parts[0] + " " + (m.get(prefix + parts[0]) or "") + ";"
+		print "keyvalue " + parts[0] + " " + (m.get(prefix + parts[0]) or "") + ";"
 	elif len(parts) >= 2:
 		# set a key
 		m.set(prefix + parts[0], " ".join(parts[1:]))
