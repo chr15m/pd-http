@@ -1,0 +1,15 @@
+#!/bin/bash
+pdreceive 1570 |
+while read line ; do
+     fetch=`echo $line | sed 's/;//'`
+     echo "url: $fetch" >> listener.log
+     result=`wget -O - "$fetch"`
+     OLD_IFS=$IFS
+     IFS=$'\x0a';
+     for t in $result;
+     do
+     	echo "$t;"
+     done
+     IFS=$OLD_IFS
+done |
+pdsend 1571 localhost

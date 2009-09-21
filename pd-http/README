@@ -1,0 +1,72 @@
+pd-http
+Copyright 2009, Chris McCormick
+GPLv3 - see the file COPYING for details
+
+Introduction
+------------
+
+This package provides a way of using HTTP to share multi-user data in Pure Data
+patches.
+
+Install
+-------
+
+Make sure you have memcache installed on your server, and python-memcache. Put
+keyvalue.cgi and incrdecr.cgi into your cgi-bin directory.
+
+On your client make sure you have wget installed and pdsend and pdreceive are
+in your path. Load up the example patch http-help.pd and then execute the
+fetchurl script on the command line.
+
+keyvalue.cgi
+------------
+
+Takes a Pd list as a query string and returns a Pd list as a string. The first
+atom of the Pd list should be the key name. If you only supply a key name it
+does a lookup. If you supply a full list, it will set the key (first item of
+the list) to be equal to the rest of the list.
+
+Example usage with URL followed by response from the server:
+
+<http://mccormick.cx/cgi-bin/keyvalue.cgi>
+keyvalue no-key;
+
+<http://mccormick.cx/cgi-bin/keyvalue.cgi?hello this is my message>
+keyvalue set hello this is my message;
+
+<http://mccormick.cx/cgi-bin/keyvalue.cgi?hello>
+this is my message;
+
+<http://mccormick.cx/cgi-bin/keyvalue.cgi?fewafeaw>
+;
+
+incrdecr.cgi
+------------
+
+Does remote atomic increment-decrement for values from Pure Data.
+Usage as URL and return value below:
+
+<http://mccormick.cx/cgi-bin/incrdecr.cgi>
+incrdecr no-key;
+
+<http://mccormick.cx/cgi-bin/incrdecr.cgi?non-existent-key>
+incrdecr no-such-key;
+
+<http://mccormick.cx/cgi-bin/incrdecr.cgi?mykey one two many>
+incrdecr too-many-args;
+
+<http://mccormick.cx/cgi-bin/incrdecr.cgi?mykey incr>
+16;
+
+<http://mccormick.cx/cgi-bin/incrdecr.cgi?mykey decr>
+15;
+
+<http://mccormick.cx/cgi-bin/incrdecr.cgi?mykey 15>
+15;
+
+<http://mccormick.cx/cgi-bin/incrdecr.cgi?mykey>
+15;
+
+<http://mccormick.cx/cgi-bin/incrdecr.cgi?my-very-bad non-integer>
+incrdecr bad-argument;
+
