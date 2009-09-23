@@ -37,16 +37,16 @@ the list) to be equal to the rest of the list.
 
 Example usage with URL followed by response from the server:
 
-<http://mccormick.cx/cgi-bin/keyvalue.cgi>
+<http://localhost:8000/cgi-bin/keyvalue.cgi>
 keyvalue no-key;
 
-<http://mccormick.cx/cgi-bin/keyvalue.cgi?hello this is my message>
+<http://localhost:8000/cgi-bin/keyvalue.cgi?hello this is my message>
 keyvalue set hello this is my message;
 
-<http://mccormick.cx/cgi-bin/keyvalue.cgi?hello>
+<http://localhost:8000/cgi-bin/keyvalue.cgi?hello>
 this is my message;
 
-<http://mccormick.cx/cgi-bin/keyvalue.cgi?fewafeaw>
+<http://localhost:8000/cgi-bin/keyvalue.cgi?fewafeaw>
 ;
 
 incrdecr.cgi
@@ -55,27 +55,27 @@ incrdecr.cgi
 Does remote atomic increment-decrement for values from Pure Data.
 Usage as URL and return value below:
 
-<http://mccormick.cx/cgi-bin/incrdecr.cgi>
+<http://localhost:8000/cgi-bin/incrdecr.cgi>
 incrdecr no-key;
 
-<http://mccormick.cx/cgi-bin/incrdecr.cgi?non-existent-key>
+<http://localhost:8000/cgi-bin/incrdecr.cgi?non-existent-key>
 incrdecr no-such-key;
 
-<http://mccormick.cx/cgi-bin/incrdecr.cgi?mykey one two many>
+<http://localhost:8000/cgi-bin/incrdecr.cgi?mykey one two many>
 incrdecr too-many-args;
 
-<http://mccormick.cx/cgi-bin/incrdecr.cgi?mykey incr>
+<http://localhost:8000/cgi-bin/incrdecr.cgi?mykey incr>
 16;
 
-<http://mccormick.cx/cgi-bin/incrdecr.cgi?mykey decr>
+<http://localhost:8000/cgi-bin/incrdecr.cgi?mykey decr>
 15;
 
-<http://mccormick.cx/cgi-bin/incrdecr.cgi?mykey 15>
+<http://localhost:8000/cgi-bin/incrdecr.cgi?mykey 15>
 15;
 
-<http://mccormick.cx/cgi-bin/incrdecr.cgi?mykey>
+<http://localhost:8000/cgi-bin/incrdecr.cgi?mykey>
 15;
 
-<http://mccormick.cx/cgi-bin/incrdecr.cgi?my-very-bad non-integer>
+<http://localhost:8000/cgi-bin/incrdecr.cgi?my-very-bad non-integer>
 incrdecr bad-argument;
 
